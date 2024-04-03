@@ -17,20 +17,17 @@ from dash.dependencies import Input, Output
 import pandas as pd
 
 import preprocess
-import viz1_1
-import viz1_2
+import viz1.viz1 as viz1
 import template
 
 
 app = dash.Dash(__name__)
 app.title = "Candy power Ranking"
 
-dataframe = pd.read_csv("./assets/data/arbres.csv")
+df = pd.read_csv("assets/data/candy-data.csv")
+df["sugarpercent"] *= 100
+df["pricepercent"] *= 100
 
-dataframe = preprocess.convert_dates(dataframe)
-dataframe = preprocess.filter_years(dataframe, 2010, 2020)
-yearly_df = preprocess.summarize_yearly_counts(dataframe)
-data = preprocess.restructure_df(yearly_df)
 
 template.create_custom_theme()
 template.set_default_theme()
@@ -51,7 +48,7 @@ app.layout = html.Div(
                 dcc.Graph(
                     id="heatmap",
                     className="graph",
-                    figure=viz1_1.get_figure(data),
+                    figure=viz1.get_figure(df),
                     config=dict(
                         scrollZoom=False,
                         showTips=False,
@@ -59,26 +56,15 @@ app.layout = html.Div(
                         doubleClick=False,
                         displayModeBar=False,
                     ),
-                ),
-                dcc.Graph(
-                    id="line-chart",
-                    className="graph",
-                    figure=viz1_2.get_empty_figure(),
-                    config=dict(
-                        scrollZoom=False,
-                        showTips=False,
-                        showAxisDragHandles=False,
-                        doubleClick=False,
-                        displayModeBar=False,
-                    ),
-                ),
+                )
             ],
         ),
         html.Footer(
             children=[
-                html.P(
-                    "Données fournies par la Ville de Montréal - © Tous droits réservés, 2021"
-                )
+                
+                    "Données fournies par "
+                ,
+                html.A("five thirthy eight", href="https://github.com/fivethirtyeight/data/tree/master/candy-power-ranking")
             ]
         ),
     ],
