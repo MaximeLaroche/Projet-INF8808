@@ -59,7 +59,7 @@ button:hover, button:active {
 .viz-container{
     height: 100%;
     width: 100%;
-    flex-direction: row;
+    flex-direction: column;
     display: flex;
     padding: 0 0;
     align-items: center;
@@ -73,4 +73,9 @@ button:hover, button:active {
     width: 100%;
     height: 600px;
     margin: 10px;
+}
+.storyline{
+    margin: 10px;
+    width: 40%;
+    min-width: 200px
 }
