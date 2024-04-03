@@ -17,8 +17,8 @@ from dash.dependencies import Input, Output
 import pandas as pd
 
 import preprocess
-import heatmap
-import line_chart
+import viz1_1
+import viz1_2
 import template
 
 
@@ -51,7 +51,7 @@ app.layout = html.Div(
                 dcc.Graph(
                     id="heatmap",
                     className="graph",
-                    figure=heatmap.get_figure(data),
+                    figure=viz1_1.get_figure(data),
                     config=dict(
                         scrollZoom=False,
                         showTips=False,
@@ -63,7 +63,7 @@ app.layout = html.Div(
                 dcc.Graph(
                     id="line-chart",
                     className="graph",
-                    figure=line_chart.get_empty_figure(),
+                    figure=viz1_2.get_empty_figure(),
                     config=dict(
                         scrollZoom=False,
                         showTips=False,
@@ -74,34 +74,12 @@ app.layout = html.Div(
                 ),
             ],
         ),
-        html.Main(
-            className="viz-container",
+        html.Footer(
             children=[
-                dcc.Graph(
-                    id="heatmap2",
-                    className="graph",
-                    figure=heatmap.get_figure(data),
-                    config=dict(
-                        scrollZoom=False,
-                        showTips=False,
-                        showAxisDragHandles=False,
-                        doubleClick=False,
-                        displayModeBar=False,
-                    ),
-                ),
-                dcc.Graph(
-                    id="line-chart2",
-                    className="graph",
-                    figure=line_chart.get_empty_figure(),
-                    config=dict(
-                        scrollZoom=False,
-                        showTips=False,
-                        showAxisDragHandles=False,
-                        doubleClick=False,
-                        displayModeBar=False,
-                    ),
-                ),
-            ],
+                html.P(
+                    "Données fournies par la Ville de Montréal - © Tous droits réservés, 2021"
+                )
+            ]
         ),
     ],
 )
@@ -123,8 +101,8 @@ def heatmap_clicked(click_data):
         chart.
     """
     if click_data is None or click_data["points"][0]["z"] == 0:
-        fig = line_chart.get_empty_figure()
-        line_chart.add_rectangle_shape(fig)
+        fig = viz1_2.get_empty_figure()
+        viz1_2.add_rectangle_shape(fig)
         return fig
 
     arrond = click_data["points"][0]["y"]
@@ -132,6 +110,6 @@ def heatmap_clicked(click_data):
 
     line_data = preprocess.get_daily_info(dataframe, arrond, year)
 
-    line_fig = line_chart.get_figure(line_data, arrond, year)
+    line_fig = viz1_2.get_figure(line_data, arrond, year)
 
     return line_fig
