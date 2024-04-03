@@ -27,9 +27,7 @@ def get_figure(df: pd.DataFrame):
     y_col = "winpercent"
 
     filtered1_df = df.copy()
-    filtered1_df["couleur"] = (
-        2 * (df["winpercent"] > 50).astype(int) + (df[x_col1] > 50).astype(int)
-    ).map(
+    filtered1_df["couleur"] = (2 * (df["winpercent"] > 50) + (df[x_col1] > 50)).map(
         {
             0: "Abordable/Santé &<br>Pas apprécié",
             1: "Abordable/Santé &<br>Apprécié",
@@ -40,9 +38,7 @@ def get_figure(df: pd.DataFrame):
     filtered1_df = filtered1_df.sort_values("couleur", ascending=False)
 
     filtered2_df = df.copy()
-    filtered2_df["couleur"] = (
-        2 * (df["winpercent"] > 50).astype(int) + (df[x_col2] > 50).astype(int)
-    ).map(
+    filtered2_df["couleur"] = (2 * (df["winpercent"] > 50) + (df[x_col2] > 50)).map(
         {
             0: "Abordable/Santé &<br>Pas apprécié",
             1: "Abordable/Santé &<br>Apprécié",
