@@ -37,8 +37,7 @@ app.layout = html.Div(
     children=[
         html.Header(
             children=[
-                html.H1("Trouvez les meilleurs bonbons pour l'halloween!"),
-                html.H2("Soyez le parent le plus populaire du quartier"),
+                html.H1(app.title),
             ]
         ),
         html.Main(
@@ -61,10 +60,49 @@ app.layout = html.Div(
         ),
         html.Footer(
             children=[
-                
-                    "Données fournies par "
-                ,
-                html.A("five thirthy eight", href="https://github.com/fivethirtyeight/data/tree/master/candy-power-ranking")
+                html.P(
+                    children=[
+                        "Données fournies par ",
+                        html.A(
+                            "five thirthy eight",
+                            href="https://github.com/fivethirtyeight/data/tree/master/candy-power-ranking",
+                        ),
+                    ]
+                ),
+                html.Table(
+                    children=[
+                        html.Tr(
+                            children=[
+                                html.Td("Maxime Laroche"),
+                                html.Td("1950276"),
+                            ]
+                        ),
+                        html.Tr(
+                            children=[
+                                html.Td("Félix Blanchard"),
+                                html.Td("2285987"),
+                            ]
+                        ),
+                        html.Tr(
+                            children=[
+                                html.Td("Juliette Arcouet"),
+                                html.Td("1848701"),
+                            ]
+                        ),
+                        html.Tr(
+                            children=[
+                                html.Td("Abdellatif KTAIB"),
+                                html.Td("2212233"),
+                            ]
+                        ),
+                        html.Tr(
+                            children=[
+                                html.Td("Zakaria HANIRI"),
+                                html.Td("2187461"),
+                            ]
+                        ),
+                    ]
+                ),
             ]
         ),
     ],
