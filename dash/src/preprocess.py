@@ -14,7 +14,6 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     """
     df["sugarpercent"] *= 100
     df["pricepercent"] *= 100
-    print(df.columns)
 
     df = df.astype(
         {
@@ -33,6 +32,4 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
             "winpercent": int,
         }
     )
-    print(df.head())
-    print(df.dtypes)
     return df

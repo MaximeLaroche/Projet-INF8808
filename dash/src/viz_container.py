@@ -13,11 +13,11 @@ def set_layout(app, df, vizs=[]):
                 ]
             ),
             html.Main(
-                id="viz1",
+                id="main",
                 className="viz-container",
                 children=[
                     dcc.Graph(
-                        id="heatmap",
+                        id="viz1",
                         className="graph",
                         figure=vizs[0].get_figure(df),
                         config=dict(
@@ -43,7 +43,7 @@ def set_layout(app, df, vizs=[]):
                     ),
                     html.P(
                         "Maxime Laroche - 1950276, Félix Blanchard - 2285987, Mehdi Belchiti - 2190903, Zakaria HANIRI - 2187461, Abdellatif KTAIB - 2212233, Juliette Arcouet - 1848701"
-                    )
+                    ),
                 ]
             ),
         ],
