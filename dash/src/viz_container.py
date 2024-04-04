@@ -1,6 +1,9 @@
 import dash_html_components as html
 import dash_core_components as dcc
 
+CANDY_TYPES = ["chocolate", "fruity", "caramel", "peanutyalmondy", "nougat",
+               "crispedricewafer", "hard", "bar", "pluribus"]
+
 
 def set_layout(app, df, vizs=[]):
 
@@ -13,20 +16,31 @@ def set_layout(app, df, vizs=[]):
                 ]
             ),
             html.Main(
-                id="viz1",
                 className="viz-container",
                 children=[
-                    dcc.Graph(
-                        id="heatmap",
-                        className="graph",
-                        figure=vizs[0].get_figure(df),
-                        config=dict(
-                            scrollZoom=False,
-                            showTips=False,
-                            showAxisDragHandles=False,
-                            doubleClick=False,
-                            displayModeBar=False,
-                        ),
+                    html.Div(
+                        id="viz1-graph",
+                        style={'width': "100%"},
+                        children=[
+                            dcc.Graph(
+                                id="viz1-1",
+                                className="graph",
+                                figure=vizs[0].get_figure(df)
+                            ),
+                            html.Div(
+                                id='type-menu-div',
+                                style={'display': 'flex', 'justify-content': 'center'},
+                                children=[
+                                    dcc.Checklist(
+                                        id='type-menu',
+                                        options=CANDY_TYPES,
+                                        value=CANDY_TYPES,
+                                        inline=True,
+                                        labelStyle={'margin-right': '10px'}
+                                    )
+                                ]
+                            )
+                        ]
                     )
                 ],
             ),
