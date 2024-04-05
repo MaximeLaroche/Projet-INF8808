@@ -1,5 +1,5 @@
-import dash_html_components as html
-import dash_core_components as dcc
+from dash import html
+from dash import dcc
 
 CANDY_TYPES = [
     "chocolate",
@@ -32,8 +32,8 @@ def set_layout(app, df, vizs=[]):
                         id="viz1-graph",
                         style={"width": "100%"},
                         children=[
-                            html.Div(
-                                className="storyline",
+                            html.P(
+                                className="storyline lead",
                                 children=[
                                     "Le temps de l'halloween est parfait pour manger des bonbons. Mais quels bonbons sont les meilleurs? On veut savoir queles bonbon sont les plus apréciés des enfants, tout en respectant le portefeuille 💸 et le Dentiste 🦷"
                                 ],

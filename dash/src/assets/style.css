@@ -76,8 +76,8 @@ button:hover, button:active {
 }
 .storyline{
     margin: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 40% !important;
     min-width: 200px
 }
