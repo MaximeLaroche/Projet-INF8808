@@ -27,9 +27,7 @@ from preprocess import preprocess_data
 app = dash.Dash(__name__)
 app.title = "Candy power Ranking"
 
-df = pd.read_csv(
-    "https://raw.githubusercontent.com/fivethirtyeight/data/master/candy-power-ranking/candy-data.csv"
-)
+df = pd.read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/candy-power-ranking/candy-data.csv")
 df = preprocess_data(df)
 
 

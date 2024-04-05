@@ -1,8 +1,17 @@
 import dash_html_components as html
 import dash_core_components as dcc
 
-CANDY_TYPES = ["chocolate", "fruity", "caramel", "peanutyalmondy", "nougat",
-               "crispedricewafer", "hard", "bar", "pluribus"]
+CANDY_TYPES = [
+    "chocolate",
+    "fruity",
+    "caramel",
+    "peanutyalmondy",
+    "nougat",
+    "crispedricewafer",
+    "hard",
+    "bar",
+    "pluribus",
+]
 
 
 def set_layout(app, df, vizs=[]):
@@ -16,31 +25,38 @@ def set_layout(app, df, vizs=[]):
                 ]
             ),
             html.Main(
+                id="main",
                 className="viz-container",
                 children=[
                     html.Div(
                         id="viz1-graph",
-                        style={'width': "100%"},
+                        style={"width": "100%"},
                         children=[
+                            html.Div(
+                                className="storyline",
+                                children=[
+                                    "Le temps de l'halloween est parfait pour manger des bonbons. Mais quels bonbons sont les meilleurs? On veut savoir queles bonbon sont les plus apréciés des enfants, tout en respectant le portefeuille 💸 et le Dentiste 🦷"
+                                ],
+                            ),
                             dcc.Graph(
                                 id="viz1-1",
                                 className="graph",
-                                figure=vizs[0].get_figure(df)
+                                figure=vizs[0].get_figure(df),
                             ),
                             html.Div(
-                                id='type-menu-div',
-                                style={'display': 'flex', 'justify-content': 'center'},
+                                id="type-menu-div",
+                                style={"display": "flex", "justify-content": "center"},
                                 children=[
                                     dcc.Checklist(
-                                        id='type-menu',
+                                        id="type-menu",
                                         options=CANDY_TYPES,
                                         value=CANDY_TYPES,
                                         inline=True,
-                                        labelStyle={'margin-right': '10px'}
+                                        labelStyle={"margin-right": "10px"},
                                     )
-                                ]
-                            )
-                        ]
+                                ],
+                            ),
+                        ],
                     )
                 ],
             ),
@@ -57,7 +73,7 @@ def set_layout(app, df, vizs=[]):
                     ),
                     html.P(
                         "Maxime Laroche - 1950276, Félix Blanchard - 2285987, Mehdi Belchiti - 2190903, Zakaria HANIRI - 2187461, Abdellatif KTAIB - 2212233, Juliette Arcouet - 1848701"
-                    )
+                    ),
                 ]
             ),
         ],
