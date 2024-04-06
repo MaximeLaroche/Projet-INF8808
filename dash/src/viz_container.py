@@ -1,20 +1,21 @@
 import dash_html_components as html
 import dash_core_components as dcc
+import pandas as pd
 
 CANDY_TYPES = [
-    "chocolate",
-    "fruity",
-    "caramel",
-    "peanutyalmondy",
-    "nougat",
-    "crispedricewafer",
-    "hard",
-    "bar",
-    "pluribus",
+    {'label': "chocolate", 'value': "chocolate"},
+    {'label': "fruity", 'value': "fruity"},
+    {'label': "caramel", 'value': "caramel"},
+    {'label': "peanuty & almondy", 'value': "peanutyalmondy"},
+    {'label': "nougat", 'value': "nougat"},
+    {'label': "crisped rice wafer", 'value': "crispedricewafer"},
+    {'label': "hard", 'value': "hard"},
+    {'label': "bar", 'value': "bar"},
+    {'label': "pluribus", 'value': "pluribus"},
 ]
 
 
-def set_layout(app, df, vizs=[]):
+def set_layout(app, df: pd.DataFrame, vizs: list = []):
 
     app.layout = html.Div(
         className="content",
@@ -25,12 +26,11 @@ def set_layout(app, df, vizs=[]):
                 ]
             ),
             html.Main(
-                id="main",
-                className="viz-container",
+                id="viz-container",
                 children=[
                     html.Div(
-                        id="viz1-graph",
-                        style={"width": "100%"},
+                        id="viz1",
+                        style={'width': "100%"},
                         children=[
                             html.Div(
                                 className="storyline",
@@ -39,24 +39,54 @@ def set_layout(app, df, vizs=[]):
                                 ],
                             ),
                             dcc.Graph(
-                                id="viz1-1",
+                                id="viz1-graph",
                                 className="graph",
                                 figure=vizs[0].get_figure(df),
                             ),
                             html.Div(
-                                id="type-menu-div",
-                                style={"display": "flex", "justify-content": "center"},
+                                id='candy-type-menu-div',
+                                style={'display': 'flex', 'justify-content': 'center'},
                                 children=[
                                     dcc.Checklist(
-                                        id="type-menu",
+                                        id='candy-type-menu',
                                         options=CANDY_TYPES,
-                                        value=CANDY_TYPES,
+                                        value=[r['value'] for r in CANDY_TYPES],
                                         inline=True,
                                         labelStyle={"margin-right": "10px"},
                                     )
-                                ],
+                                ]
+                            )
+                        ]
+                    ),
+                    html.Div(
+                        id="viz2",
+                        style={'width': "100%"},
+                        children=[
+                            dcc.Graph(
+                                id="viz2-graph",
+                                className="graph",
+                                figure=vizs[0].get_figure(df)
                             ),
-                        ],
+                            html.Div(
+                                id='candy-choice-menu-div',
+                                style={'display': 'flex', 'justify-content': 'center', 'flex-direction': 'row', 'width': "100%"},
+                                children=[
+                                    dcc.Dropdown(
+                                        style={'width': '20em'},
+                                        id='candy-choice-menu',
+                                        options=df['competitorname'].unique().tolist()
+                                    ),
+                                    html.Div(style={'width': '5em'}),
+                                    html.Div(
+                                        style={'width': '30em'},
+                                        children=[dcc.Slider(
+                                            id='candy-proximity',
+                                            value=1, min=1, max=9, marks={i: f"{i}+" for i in range(9)}
+                                        )]
+                                    )
+                                ]
+                            )
+                        ]
                     )
                 ],
             ),

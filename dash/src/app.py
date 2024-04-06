@@ -10,15 +10,13 @@
 """
 
 import dash
-import dash_html_components as html
-import dash_core_components as dcc
-from dash.exceptions import PreventUpdate
 from dash import Input, Output, callback
 
 import pandas as pd
+import numpy as np
 
-import preprocess
-import viz1.viz1 as viz1
+import viz1_3.viz1 as viz1
+import viz1_3.viz2 as viz2
 import template
 from viz_container import set_layout, CANDY_TYPES
 from preprocess import preprocess_data
@@ -34,16 +32,36 @@ df = preprocess_data(df)
 template.create_custom_theme()
 template.set_default_theme()
 
-set_layout(app, df, [viz1])
+set_layout(app, df, [viz1, viz2])
 
 
 @callback(
-    Output('viz1-1', 'figure'),
-    Input('type-menu', 'value'))
-def update_figure(selected_types):
-    selected_types = set(CANDY_TYPES).difference(selected_types)
-    if len(selected_types) == 0:
-        return viz1.get_figure(df)
-
-    filtered_df = df[sum(df[t] for t in selected_types) == 0]
+    Output('viz1-graph', 'figure'),
+    Input('candy-type-menu', 'value')
+)
+def update_vis(selected_types):
+    filtered_df = df[sum(df[t] for t in selected_types) > 0]
     return viz1.get_figure(filtered_df)
+
+
+@callback(
+    Output('viz2-graph', 'figure'),
+    Input('candy-choice-menu', 'value'),
+    Input('candy-proximity', 'value')
+)
+def update_vis2(selected_candy, proximity_val):
+    if selected_candy is None:
+        return viz2.get_figure(df)
+
+    types = [r['value'] for r in CANDY_TYPES]
+
+    _df = df.copy()
+    values: pd.Series = _df[_df['competitorname'] == selected_candy][types].iloc[0]
+
+    def proximity(row):
+        return np.sum(row == values)
+
+    _df['proximity'] = _df[types].apply(proximity, axis=1)
+    filtered_df = _df[_df['proximity'] >= proximity_val]
+
+    return viz2.get_figure(filtered_df)
