@@ -49,12 +49,12 @@ button:hover, button:active {
 	background-color:#f6f6f6;
 }
 
-.content {
+/*.content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-}
+}*/
 
 .viz-container{
     height: 100%;
@@ -76,8 +76,8 @@ button:hover, button:active {
 }
 .storyline{
     margin: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 40% !important;
     min-width: 200px
 }
