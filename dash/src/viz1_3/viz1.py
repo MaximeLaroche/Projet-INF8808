@@ -32,7 +32,13 @@ def get_figure(df: pd.DataFrame):
             columns={"couleur": "other_c", "index": "other_i"}
     ), on="competitorname").sort_values(["couleur", 'index'], ascending=True)
 
-    # Replace number for correct label
+    # matching the other color to actual graph number
+    couleur = {v: i for i, v in enumerate(sorted(filtered2_df['couleur'].unique()))}
+    other_c = {v: i for i, v in enumerate(sorted(filtered2_df['other_c'].unique()))}
+    filtered2_df['other_c'] = filtered2_df['other_c'].map(other_c)
+    filtered1_df['other_c'] = len(other_c) + filtered1_df['other_c'].map(couleur)
+
+    # changing legend names
     filtered1_df["couleur"] = filtered1_df["couleur"].map(legend_dict)
     filtered2_df["couleur"] = filtered2_df["couleur"].map(legend_dict)
 

@@ -81,11 +81,22 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                                         style={'width': '30em'},
                                         children=[dcc.Slider(
                                             id='candy-proximity',
-                                            value=1, min=1, max=9, marks={i: f"{i}+" for i in range(9)}
+                                            value=1, min=1, step=1, max=9, marks={i: f"{i}+" for i in range(9)}
                                         )]
                                     )
                                 ]
                             )
+                        ]
+                    ),
+                    html.Div(
+                        id="viz3",
+                        style={'width': "100%"},
+                        children=[
+                            dcc.Graph(
+                                id="viz3-graph",
+                                className="graph",
+                                figure=vizs[1].get_figure(df)
+                            ),
                         ]
                     )
                 ],
