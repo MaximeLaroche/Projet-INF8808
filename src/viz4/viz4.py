@@ -28,7 +28,7 @@ df_nougat = df[df['nougat'] == 1]
 nougat_mean = df_nougat['winpercent'].mean()
 
 # fig4_ 1
-fig4_1 = px.histogram(df_fruity, x='winpercent', nbins=5, title='Fruity', height=500, width=500)
+fig4_1 = px.histogram(df_fruity, x='winpercent', nbins=5, title='Fruity', height=300, width=300)
 
 fig4_1.update_layout(
     plot_bgcolor='whitesmoke',
@@ -47,7 +47,7 @@ fig4_1.update_xaxes(title="Taux d'appréciation", range=[0, 100])
 fig4_1.update_yaxes(title='Quantité de Bonbons', range=[0, 15])
 
 # fig4_ 2
-fig4_2 = px.histogram(df_chocolate, x='winpercent', nbins=5, title='Chocolate', height=500, width=500)
+fig4_2 = px.histogram(df_chocolate, x='winpercent', nbins=5, title='Chocolate', height=300, width=300)
 
 fig4_2.update_layout(
     plot_bgcolor='whitesmoke',
@@ -68,7 +68,7 @@ fig4_2.update_yaxes(title='Quantité de Bonbons', range=[0, 15])
 
 
 # fig4_ 3
-fig4_3 = px.histogram(df_caramel, x='winpercent', nbins=5, height=500, width=500)
+fig4_3 = px.histogram(df_caramel, x='winpercent', nbins=5, height=300, width=300)
 
 fig4_3.update_layout(
     plot_bgcolor='whitesmoke',
@@ -88,7 +88,7 @@ fig4_3.update_yaxes(title='Quantité de Bonbons', range=[0, 15])
 
 
 # fig4_ 4
-fig4_4 = px.histogram(df_peanutyalmondy, x='winpercent', nbins=10, height=500, width=500)
+fig4_4 = px.histogram(df_peanutyalmondy, x='winpercent', nbins=10, height=300, width=300)
 
 fig4_4.update_layout(
     plot_bgcolor='whitesmoke',
@@ -107,7 +107,7 @@ fig4_4.update_xaxes(title="Taux d'appréciation", range=[0, 100])
 fig4_4.update_yaxes(title='Quantité de Bonbons', range=[0, 15])
 
 # fig4_ 5
-fig4_5 = px.histogram(df_crispedricewafer, x='winpercent', nbins=5, height=500, width=500)
+fig4_5 = px.histogram(df_crispedricewafer, x='winpercent', nbins=5, height=300, width=300)
 
 fig4_5.update_layout(
     plot_bgcolor='whitesmoke',
@@ -126,7 +126,7 @@ fig4_5.update_xaxes(title="Taux d'appréciation", range=[0, 100])
 fig4_5.update_yaxes(title='Quantité de Bonbons', range=[0, 15])
 
 # fig4_ 6
-fig4_6 = px.histogram(df_nougat , x='winpercent', nbins=5, height=500, width=500)
+fig4_6 = px.histogram(df_nougat , x='winpercent', nbins=5, height=300, width=300)
 
 fig4_6.update_layout(
     plot_bgcolor='whitesmoke',
@@ -196,7 +196,7 @@ df_nougat_crispe_mean = df_nougat_crispe['winpercent'].mean()
 
 
 # fig4_ 7
-fig4_7 = px.histogram(df_caramel_crispe , x='winpercent', nbins=4, height=500, width=500)
+fig4_7 = px.histogram(df_caramel_crispe , x='winpercent', nbins=4, height=300, width=300)
 
 fig4_7.update_layout(
     plot_bgcolor='whitesmoke',
@@ -215,7 +215,7 @@ fig4_7.update_xaxes(title="Taux d'appréciation", range=[0, 100])
 fig4_7.update_yaxes(title='Quantité de Bonbons', range=[0, 8])
 
 # fig4_ 8
-fig4_8 = px.histogram(df_caramel_nougat , x='winpercent', nbins=2, height=500, width=500)
+fig4_8 = px.histogram(df_caramel_nougat , x='winpercent', nbins=2, height=300, width=300)
 
 fig4_8.update_layout(
     plot_bgcolor='whitesmoke',
@@ -234,7 +234,7 @@ fig4_8.update_xaxes(title="Taux d'appréciation", range=[0, 100])
 fig4_8.update_yaxes(title='Quantité de Bonbons', range=[0, 8])
 
 # fig4_ 9
-fig4_9 = px.histogram(df_caramel_peanut , x='winpercent', nbins=2, height=500, width=500)
+fig4_9 = px.histogram(df_caramel_peanut , x='winpercent', nbins=2, height=300, width=300)
 
 fig4_9.update_layout(
     plot_bgcolor='whitesmoke',
@@ -253,7 +253,7 @@ fig4_9.update_xaxes(title="Taux d'appréciation", range=[0, 100])
 fig4_9.update_yaxes(title='Quantité de Bonbons', range=[0, 8])
 
 # fig4_ 10
-fig4_10 = px.histogram(df_chocolate_crispe , x='winpercent', nbins=5, height=500, width=500)
+fig4_10 = px.histogram(df_chocolate_crispe , x='winpercent', nbins=5, height=300, width=300)
 
 fig4_10.update_layout(
     plot_bgcolor='whitesmoke',
@@ -272,7 +272,7 @@ fig4_10.update_xaxes(title="Taux d'appréciation", range=[0, 100])
 fig4_10.update_yaxes(title='Quantité de Bonbons', range=[0, 8])
 
 # fig4_ 11
-fig4_11 = px.histogram(df_chocolate_peanut, x='winpercent', nbins=5, height=500, width=500)
+fig4_11 = px.histogram(df_chocolate_peanut, x='winpercent', nbins=5, height=300, width=300)
 
 fig4_11.update_layout(
     plot_bgcolor='whitesmoke',
@@ -291,7 +291,7 @@ fig4_11.update_xaxes(title="Taux d'appréciation", range=[0, 100])
 fig4_11.update_yaxes(title='Quantité de Bonbons', range=[0, 8])
 
 # fig4_ 12
-fig4_12 = px.histogram(df_chocolate_caramel, x='winpercent', nbins=5, height=500, width=500)
+fig4_12 = px.histogram(df_chocolate_caramel, x='winpercent', nbins=5, height=300, width=300)
 
 fig4_12.update_layout(
     plot_bgcolor='whitesmoke',

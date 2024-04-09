@@ -113,24 +113,44 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                     ),
                     html.Div(
                         id="viz4_1",
-                        className="viz4",
                         children=[
+                            html.P(
+                                className="storyline lead",
+                                children=[
+                                    "À mettre un story line avec info intéressante pour les aliments les plus apréciés"
+                                ],
+                            ),
                             html.Div(
-                                style={"max-width": "25%"},
-                                children=[dcc.Graph(figure=fig)],
-                            )
-                            for fig in viz4.aliments
+                                className="graph viz4",
+                                children=[
+                                    html.Div(
+                                        style={"max-width": "25%"},
+                                        children=[dcc.Graph(figure=fig)],
+                                    )
+                                    for fig in viz4.aliments
+                                ],
+                            ),
                         ],
                     ),
                     html.Div(
                         id="viz4_2",
-                        className="viz4",
                         children=[
+                            html.P(
+                                className="storyline lead",
+                                children=[
+                                    "À mettre un story line avec info intéressante pour les combinaisons d'aliments les plus apréciés"
+                                ],
+                            ),
                             html.Div(
-                                style={"max-width": "25%"},
-                                children=[dcc.Graph(figure=fig)],
-                            )
-                            for fig in viz4.combo_aliments
+                                className="graph viz4",
+                                children=[
+                                    html.Div(
+                                        style={"max-width": "25%"},
+                                        children=[dcc.Graph(figure=fig)],
+                                    )
+                                    for fig in viz4.combo_aliments
+                                ],
+                            ),
                         ],
                     ),
                 ],
