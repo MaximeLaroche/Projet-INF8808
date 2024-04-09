@@ -89,4 +89,4 @@ def create_app():
 
 
 server = create_app()
-server.run(port="8050", debug=False)
+#server.run(port="8050", debug=False)
