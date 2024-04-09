@@ -38,54 +38,54 @@ template.create_custom_theme()
 set_layout(app, df, [viz12, viz3])
 
 
-@callback(
-    Output('viz1-graph', 'figure'),
-    Input('candy-type-menu', 'value')
-)
+@callback(Output("viz1-graph", "figure"), Input("candy-type-menu", "value"))
 def update_vis(selected_types):
     filtered_df = df[sum(df[t] for t in selected_types) > 0]
     return viz12.get_figure(filtered_df)
 
 
 @callback(
-    Output('viz2-graph', 'figure'),
-    Input('candy-choice-menu', 'value'),
-    Input('candy-proximity', 'value')
+    Output("viz2-graph", "figure"),
+    Input("candy-choice-menu", "value"),
+    Input("candy-proximity", "value"),
 )
 def update_vis2(selected_candy, proximity_val):
     if selected_candy is None:
         return viz12.get_figure(df)
 
-    types = [r['value'] for r in CANDY_TYPES]
+    types = [r["value"] for r in CANDY_TYPES]
 
     _df = df.copy()
-    values: pd.Series = _df[_df['competitorname'] == selected_candy][types].iloc[0]
+    values: pd.Series = _df[_df["competitorname"] == selected_candy][types].iloc[0]
 
     def proximity(row):
         return np.sum(row == values)
 
-    _df['proximity'] = _df[types].apply(proximity, axis=1)
-    filtered_df = _df[_df['proximity'] >= proximity_val]
+    _df["proximity"] = _df[types].apply(proximity, axis=1)
+    filtered_df = _df[_df["proximity"] >= proximity_val]
 
     return viz12.get_figure(filtered_df)
 
-'''
+
+"""
     Contains the server to run our application.
-'''
+"""
 from flask_failsafe import failsafe
 
 
 @failsafe
 def create_app():
-    '''
-        Gets the underlying Flask server from our Dash app.
+    """
+    Gets the underlying Flask server from our Dash app.
 
-        Returns:
-            The server to be run
-    '''
+    Returns:
+        The server to be run
+    """
     # the import is intentionally inside to work with the server failsafe
     from app import app  # pylint: disable=import-outside-toplevel
-    return app.server
+
+    server = app.server
+    return server
 
 
 if __name__ == "__main__":
