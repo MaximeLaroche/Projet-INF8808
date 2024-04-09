@@ -21,7 +21,7 @@ import viz1_3.viz3 as viz3
 import template
 from viz_container import set_layout, CANDY_TYPES
 from preprocess import preprocess_data
-from viz4 import viz4
+import viz4.viz4 as viz4
 
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])

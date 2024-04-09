@@ -81,3 +81,10 @@ button:hover, button:active {
     width: 40% !important;
     min-width: 200px
 }
+
+.viz4{
+    width: 100%;
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(3, 1fr);
+}
