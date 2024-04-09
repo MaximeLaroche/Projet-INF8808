@@ -88,5 +88,5 @@ def create_app():
     return server
 
 
-if __name__ == "__main__":
-    create_app().run(port="8050", debug=True)
+server = create_app()
+server.run(port="8050", debug=True)
