@@ -39,6 +39,9 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                                     "Le temps de l'halloween est parfait pour manger des bonbons. Mais quels bonbons sont les meilleurs? On veut savoir queles bonbon sont les plus apréciés des enfants, tout en respectant le portefeuille 💸 et le Dentiste 🦷"
                                 ],
                             ),
+                            html.H3(
+                                children="Appréciation générale des bonbons en fonction du prix et du taux de sucre"
+                            ),
                             dcc.Graph(
                                 id="viz1-graph",
                                 className="graph",
@@ -61,8 +64,17 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                     ),
                     html.Div(
                         id="viz2",
-                        style={"width": "100%"},
+                        style={"width": "100%", "padding-top": "3cm"},
                         children=[
+                            html.P(
+                                className="storyline lead",
+                                children=[
+                                    "Vous avez choisi d'acheter les bonbon les plus apprécié par la majorité des enfant, mais un enfant vous demande un bonbon en particulier que vous n'avez pas?. Le graphique suivant présente le taux d'appréciation des bonbons ayant le plus d'attribut commun avec le bonbon demandé par l'enfant. Ça pourrait sauver votre Halloween! 🎃 Simplement sélectioné le bonbon demandé et spécifier combien d'ingrédient en commun les bonbon doivent avoir pour s'afficher"
+                                ],
+                            ),
+                            html.H3(
+                                children="Meilleurs alternatives de substitution de bonbon"
+                            ),
                             dcc.Graph(
                                 id="viz2-graph",
                                 className="graph",
@@ -102,8 +114,17 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                     ),
                     html.Div(
                         id="viz3",
-                        style={"width": "100%"},
+                        style={"width": "100%", "padding-top": "3cm"},
                         children=[
+                            html.P(
+                                className="storyline lead",
+                                children=[
+                                    "Durant toute soirée d'halloween, il y a le fameux débat pour déterminer quels sont les meilleurs ingrédients de bonbon. Certain jurent par le chocolat 🍫, d'autre par le caramel. Ici, vous trouverez la vérité une fois pour toute! L'appréciation général des bonbons est affiché dans le graphique suivant et les couleurs représente si un bonbon a une certaine caractéristique. Vous pourrez aussi voir si le chocolat est vraiment plus sucré que les fruits!"
+                                ],
+                            ),
+                            html.H3(
+                                children="Appréciation générale des bonbon en fonction du taux de sucre, du prix et identifier par leur ingrédients"
+                            ),
                             dcc.Graph(
                                 id="viz3-graph",
                                 className="graph",
@@ -113,12 +134,16 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                     ),
                     html.Div(
                         id="viz4_1",
+                        style={"width": "100%", "padding-top": "3cm"},
                         children=[
                             html.P(
                                 className="storyline lead",
                                 children=[
-                                    "À mettre un story line avec info intéressante pour les aliments les plus apréciés"
+                                    "Avec la quantité de bonbon dans le graphique précédent, il peu être difficile de voir les tendances. C'est pourquoi nous avons regroupé les bonbons en fonction de leur ingrédients. Vous pourrez voir les tendances plus facilement et peut-être même découvrir des combinaisons de bonbon que vous n'auriez jamais pensé essayer!"
                                 ],
+                            ),
+                            html.H3(
+                                children="Distribution de l'appréciation des bonbons en fonction de leur ingrédients"
                             ),
                             html.Div(
                                 className="graph viz4",
@@ -134,12 +159,16 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                     ),
                     html.Div(
                         id="viz4_2",
+                        style={"width": "100%", "padding-top": "3cm"},
                         children=[
                             html.P(
                                 className="storyline lead",
                                 children=[
-                                    "À mettre un story line avec info intéressante pour les combinaisons d'aliments les plus apréciés"
+                                    "Toutefois, la plutpart des bonbons comportent plus d'un ingrédient. Parfois, deux bonne chose ensemble peuvent ne pas être bon du tout et même, deux ingrédient très moyens ensemble peuvent être très appréciés. Nous avons alors pris la liberté de tracer les même courbes, mais cette fois-ci en fonction de la combinaison de deux ingrédients. Vous pourrez voir les tendances plus facilement et peut-être même découvrir des combinaisons de bonbon que vous n'auriez jamais pensé essayer!"
                                 ],
+                            ),
+                            html.H3(
+                                children="Distribution de l'appréciation des bonbons en fonction de la présence d'une combinaison d'ingrédients"
                             ),
                             html.Div(
                                 className="graph viz4",
