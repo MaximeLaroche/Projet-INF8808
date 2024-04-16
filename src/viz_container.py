@@ -1,7 +1,6 @@
 import pandas as pd
 from dash import html
 from dash import dcc
-import viz4.viz4 as viz4
 
 CANDY_TYPES = [
     {"label": "chocolate", "value": "chocolate"},
@@ -17,6 +16,9 @@ CANDY_TYPES = [
 
 
 def set_layout(app, df: pd.DataFrame, vizs: list = []):
+    viz12 = vizs[0].get_figure(df)
+    viz3 = vizs[1].get_figure(df)
+    viz4_1, viz4_2 = vizs[2].get_figures(df)
 
     app.layout = html.Div(
         className="content",
@@ -45,7 +47,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                             dcc.Graph(
                                 id="viz1-graph",
                                 className="graph",
-                                figure=vizs[0].get_figure(df),
+                                figure=viz12,
                             ),
                             html.Div(
                                 id="candy-type-menu-div",
@@ -78,7 +80,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                             dcc.Graph(
                                 id="viz2-graph",
                                 className="graph",
-                                figure=vizs[0].get_figure(df),
+                                figure=viz12,
                             ),
                             html.Div(
                                 id="candy-choice-menu-div",
@@ -128,7 +130,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                             dcc.Graph(
                                 id="viz3-graph",
                                 className="graph",
-                                figure=vizs[1].get_figure(df),
+                                figure=viz3,
                             ),
                         ],
                     ),
@@ -145,15 +147,10 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                             html.H3(
                                 children="Distribution de l'appréciation des bonbons en fonction de leur ingrédients"
                             ),
-                            html.Div(
-                                className="graph viz4",
-                                children=[
-                                    html.Div(
-                                        style={"max-width": "25%"},
-                                        children=[dcc.Graph(figure=fig)],
-                                    )
-                                    for fig in viz4.aliments
-                                ],
+                            dcc.Graph(
+                                id="viz4_2-graph",
+                                className="graph",
+                                figure=viz4_1
                             ),
                         ],
                     ),
@@ -170,15 +167,10 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                             html.H3(
                                 children="Distribution de l'appréciation des bonbons en fonction de la présence d'une combinaison d'ingrédients"
                             ),
-                            html.Div(
-                                className="graph viz4",
-                                children=[
-                                    html.Div(
-                                        style={"max-width": "25%"},
-                                        children=[dcc.Graph(figure=fig)],
-                                    )
-                                    for fig in viz4.combo_aliments
-                                ],
+                            dcc.Graph(
+                                id="viz4_1-graph",
+                                className="graph",
+                                figure=viz4_2
                             ),
                         ],
                     ),
