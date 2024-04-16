@@ -1,16 +1,22 @@
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 
 TEMPLATE_NAME = 'simple_white'
 
 
 def to_final(right: go.Figure, left: go.Figure):
-    left.update_traces(xaxis="x2", yaxis="y2", showlegend=False)
-    fig = go.Figure(
-        # putting the figures in order. Text must be first to be behind the layer of the Data
-        data=[*right.data, *left.data],
-        layout=get_layout()
+    left.update_traces(showlegend=False)
+    fig = make_subplots(rows=1, cols=2, column_titles=[
+        'Appréciation en fonction du <b>prix</b> normalisé',
+        'Appréciation en fonction du <b>taux de sucre</b> normalisé'
+    ])
+    fig.add_traces(
+        [*right.data, *left.data],
+        rows=[1] * (len(right.data) + len(left.data)),
+        cols=[*([1] * len(right.data)),  *([2] * len(left.data))]
     )
+    fig.update_layout(dict1=get_layout())
     # Changing the hover_template for all graphs
     fig.update_traces(hovertemplate=(
         '<b style="font-size: 1.3em">%{customdata[0]}</b><br>'
@@ -85,11 +91,11 @@ def get_text():
 def get_layout():
     return {
         # Adding the 4 axix for the two graphs
-        "xaxis": {"anchor": "y", "domain": [0, 0.49], "range": [0, 100], "title": {"text": "Prix relatif (%)"}},
-        "xaxis2": {"anchor": "y2", "domain": [0.51, 1], "range": [0, 100], "matches": "x",
+        "xaxis": {"anchor": "y", "domain": [0, 0.46], "range": [0, 100], "title": {"text": "Prix relatif (%)"}},
+        "xaxis2": {"anchor": "y2", "domain": [0.54, 1], "range": [0, 100], "matches": "x",
                    "title": {"text": "Proportion de sucre (%)"}},
-        "yaxis": {"anchor": "x", "domain": [0, 1], "range": [0, 100], "title": {"text": "Appréciation (%)"}},
-        "yaxis2": {"anchor": "x2", "domain": [0, 1], "range": [0, 100], "matches": "y", "showticklabels": False},
+        "yaxis": {"anchor": "x", "domain": [0, .99], "range": [0, 100], "title": {"text": "Appréciation (%)"}},
+        "yaxis2": {"anchor": "x2", "domain": [0, .99], "range": [0, 100], "matches": "y", "title": {"text": "Appréciation (%)"}},
         # Adding the 4 lines to divide the graph into four parts
         "shapes": [
             {"layer": "below", "line": {"color": "grey", "width": 2}, "type": "line",
