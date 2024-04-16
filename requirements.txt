@@ -1,4 +1,4 @@
-dash>=2.6
+dash>=2.15
 dash-bootstrap-components>=1.5
 Flask-Failsafe>=0.2
 dash-tools>=1.12.0

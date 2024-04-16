@@ -1,6 +1,8 @@
 import pandas as pd
 from dash import html
 from dash import dcc
+from itertools import chain
+import dash_bootstrap_components as dbc
 
 CANDY_TYPES = [
     {"label": "chocolate", "value": "chocolate"},
@@ -13,7 +15,6 @@ CANDY_TYPES = [
     {"label": "bar", "value": "bar"},
     {"label": "pluribus", "value": "pluribus"},
 ]
-
 
 def set_layout(app, df: pd.DataFrame, vizs: list = []):
     viz12 = vizs[0].get_figure(df)
@@ -53,12 +54,19 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                                 id="candy-type-menu-div",
                                 style={"display": "flex", "justify-content": "center"},
                                 children=[
-                                    dcc.Checklist(
+                                    dbc.ButtonGroup(
                                         id="candy-type-menu",
-                                        options=CANDY_TYPES,
-                                        value=[r["value"] for r in CANDY_TYPES],
-                                        inline=True,
-                                        labelStyle={"margin-right": "10px"},
+                                        children=list(chain(
+                                            dbc.Checkbox(
+                                                id=f'candy-type-{r["value"]}',
+                                                value=False,
+                                                label=r["label"],
+                                                input_class_name=['btn-check'],
+                                                label_class_name=['btn', 'btn-outline-primary'],
+                                                style={'padding': '0.1rem'}
+                                            )
+                                            for r in CANDY_TYPES
+                                        ))
                                     )
                                 ],
                             ),
@@ -92,6 +100,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                                 },
                                 children=[
                                     dcc.Dropdown(
+                                        placeholder='Choisissez un bonbon...',
                                         style={"width": "20em"},
                                         id="candy-choice-menu",
                                         options=df["competitorname"].unique().tolist(),
@@ -107,6 +116,10 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                                                 step=1,
                                                 max=9,
                                                 marks={i: f"{i}+" for i in range(9)},
+                                                tooltip={
+                                                    'style': {'width': '10rem'},
+                                                    "template": " au moins {value} similarités avec le bonbon choisi "
+                                                },
                                             )
                                         ],
                                     ),

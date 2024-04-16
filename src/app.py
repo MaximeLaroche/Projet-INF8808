@@ -39,9 +39,16 @@ template.create_custom_theme()
 set_layout(app, df, [viz12, viz3, viz4])
 
 
-@callback(Output("viz1-graph", "figure"), Input("candy-type-menu", "value"))
-def update_vis(selected_types):
-    filtered_df = df[sum(df[t] for t in selected_types) > 0]
+@callback(Output("viz1-graph", "figure"),
+          *[Input(f"candy-type-{t['value']}", "value") for t in CANDY_TYPES]
+          )
+def update_vis(*args):
+    values = [v['value'] for i, v in enumerate(CANDY_TYPES) if args[i]]
+
+    if len(values) == 0:
+        return viz12.get_figure(df)
+
+    filtered_df = df[sum(df[t] for t in values) > 0]
     return viz12.get_figure(filtered_df)
 
 
