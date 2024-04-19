@@ -39,7 +39,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                             html.P(
                                 className="storyline lead",
                                 children=[
-                                    "Le temps de l'halloween est parfait pour manger des bonbons. Mais quels bonbons sont les meilleurs? On veut savoir queles bonbon sont les plus apréciés des enfants, tout en respectant le portefeuille 💸 et le Dentiste 🦷"
+                                    "Le temps de l'halloween est parfait pour manger des bonbons. Mais quels bonbons sont les meilleurs ? On veut connaître les bonbons les plus appréciés des enfants, tout en respectant le portefeuille des habitants du quartier 💸 et éviter si possible des bonbons trop sucrés 🦷. Le graphique ci-dessous, possède un menu interactif qui vous permet de voir de sélectionner les ingrédients désirés et cela fera apparaitre les bonbons comprenant ces ingrédients. Vous pouvez aussi cliquer sur la légende des couleurs pour ne voir apparaitre que la catégorie que vous souhaitez."
                                 ],
                             ),
                             html.H3(
@@ -79,7 +79,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                             html.P(
                                 className="storyline lead",
                                 children=[
-                                    "Vous avez choisi d'acheter les bonbon les plus apprécié par la majorité des enfant, mais un enfant vous demande un bonbon en particulier que vous n'avez pas?. Le graphique suivant présente le taux d'appréciation des bonbons ayant le plus d'attribut commun avec le bonbon demandé par l'enfant. Ça pourrait sauver votre Halloween! 🎃 Simplement sélectioné le bonbon demandé et spécifier combien d'ingrédient en commun les bonbon doivent avoir pour s'afficher"
+                                    "Imaginons qu’un enfant vous demande un bonbon en particulier que vous n'avez pas. Le graphique suivant présente le taux d'appréciation des bonbons ayant le plus d'attribut commun avec le bonbon demandé par l'enfant. Ça pourrait sauver votre Halloween ! 🎃 Simplement, écrivez le bonbon demandé dans la barre de recherche et spécifié combien d'ingrédient en commun les bonbons proposés doivent avoir avec celui recherché (un plus grand nombre sera gage d’une plus grande similarité). Les substituts vont ensuite s'afficher !"
                                 ],
                             ),
                             html.H3(
@@ -134,7 +134,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                             html.P(
                                 className="storyline lead",
                                 children=[
-                                    "Durant toute soirée d'halloween, il y a le fameux débat pour déterminer quels sont les meilleurs ingrédients de bonbon. Certain jurent par le chocolat 🍫, d'autre par le caramel. Ici, vous trouverez la vérité une fois pour toute! L'appréciation général des bonbons est affiché dans le graphique suivant et les couleurs représente si un bonbon a une certaine caractéristique. Vous pourrez aussi voir si le chocolat est vraiment plus sucré que les fruits!"
+                                    "Durant toute soirée d'halloween, il y a le fameux débat pour déterminer quels sont les meilleurs bonbons. Certains jurent uniquement par les bars de chocolat 🍫, d’autres par les bonbons fruités. Ici, vous trouverez la vérité une fois pour toutes ! L'appréciation générale des bonbons est affichée dans le graphique suivant et les couleurs représentent si un bonbon a une certaine caractéristique. En analysant les données il y a des clusters de bonbons qui ressortent : •	Les bars de chocolats (elles auront généralement des noix du caramel etc.) •	Les paquets de bonbons au chocolat (types smarties, reeves etc.) •	Les paquets de bonbons aux fruits •	Les bonbons vendus à l'unités au fruit"
                                 ],
                             ),
                             html.H3(
@@ -154,7 +154,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                             html.P(
                                 className="storyline lead",
                                 children=[
-                                    "Avec la quantité de bonbon dans le graphique précédent, il peu être difficile de voir les tendances. C'est pourquoi nous avons regroupé les bonbons en fonction de leur ingrédients. Vous pourrez voir les tendances plus facilement et peut-être même découvrir des combinaisons de bonbon que vous n'auriez jamais pensé essayer!"
+                                    "Avec la quantité de bonbons dans le graphique précédent, il peut être difficile de voir les tendances. C'est pourquoi nous avons regroupé les bonbons en fonction de leurs ingrédients. Vous pourrez voir les tendances plus facilement et peut-être même découvrir des combinaisons de bonbon que vous n'auriez jamais pensé essayer !"
                                 ],
                             ),
                             html.H3(
@@ -174,7 +174,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                             html.P(
                                 className="storyline lead",
                                 children=[
-                                    "Toutefois, la plutpart des bonbons comportent plus d'un ingrédient. Parfois, deux bonne chose ensemble peuvent ne pas être bon du tout et même, deux ingrédient très moyens ensemble peuvent être très appréciés. Nous avons alors pris la liberté de tracer les même courbes, mais cette fois-ci en fonction de la combinaison de deux ingrédients. Vous pourrez voir les tendances plus facilement et peut-être même découvrir des combinaisons de bonbon que vous n'auriez jamais pensé essayer!"
+                                    "Toutefois, la plupart des bonbons comportent plus d'un ingrédient. Parfois, deux bons ingrédients combinés ne sont pas très appréciés et inversement. Nous avons alors pris la liberté de tracer les mêmes courbes, mais cette fois-ci en fonction de la combinaison de deux ingrédients. Vous pourrez voir les tendances plus facilement et peut-être même découvrir des combinaisons de bonbon que vous n'auriez jamais pensé essayer ! À prendre en note que seules les meilleures interactions sont présentées."
                                 ],
                             ),
                             html.H3(
