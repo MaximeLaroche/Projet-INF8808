@@ -208,7 +208,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                         ]
                     ),
                     html.P(
-                        "Maxime Laroche - 1950276, Félix Blanchard - 2285987, Mehdi Belchiti - 2190903, Zakaria HANIRI - 2187461, Abdellatif KTAIB - 2212233, Juliette Arcouet - 1848701. Voici le lien des données : https://github.com/fivethirtyeight/data/tree/master/candy-power-ranking. Aucun calcul ni traitement des données n'a été nécessaire dans cette étude."
+                        "Maxime Laroche - 1950276, Félix Blanchard - 2285987, Mehdi Belchiti - 2190903, Zakaria HANIRI - 2187461, Abdellatif KTAIB - 2212233, Juliette Arcouet - 1848701. Voici le lien des données : https://github.com/fivethirtyeight/data/tree/master/candy-power-ranking. Aucun calcul ni traitement des données n'a été nécessaire dans cette étude sauf pour la visualisation 4 où nous avons calculés des moyennes."
                     ),
                 ]
             ),
