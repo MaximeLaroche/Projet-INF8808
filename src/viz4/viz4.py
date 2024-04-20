@@ -66,6 +66,6 @@ def make_subplot(titles, dfs, means, keys, y_range):
 
     fig.update_xaxes(title="Taux d'appréciation", range=[0, 100])
     fig.update_yaxes(title='Quantité de Bonbons', range=y_range)
-    fig.update_layout(showlegend=False)
+    fig.update_layout(showlegend=False, plot_bgcolor='white')
     fig.update_traces(marker_color='royalblue')
     return fig
