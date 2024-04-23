@@ -78,7 +78,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                             html.P(
                                 className="storyline lead",
                                 children=[
-                                    "Le graphique ci-dessus, possède un menu interactif qui vous permet de sélectionner certains ingrédients désirés et les bonbons comprenant ces ingrédients apparaîtront. Vous pouvez aussi cliquer sur la légende des couleurs pour ne voir apparaitre que la catégorie que vous souhaitez. Il vous est également possible de sélectionner les catégories de bonbons que vous souhaitez voir en cliquant sur les boutons."
+                                    "Le graphique ci-dessus, possède un menu interactif (en bas) qui vous permet de sélectionner certains ingrédients désirés et les bonbons comprenant ces ingrédients apparaîtront. Vous pouvez aussi cliquer sur la légende des couleurs pour ne voir apparaitre que la catégorie que vous souhaitez."
                                 ],
                             ),
                         ],
@@ -208,7 +208,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                         ]
                     ),
                     html.P(
-                        "Maxime Laroche - 1950276, Félix Blanchard - 2285987, Mehdi Belchiti - 2190903, Zakaria HANIRI - 2187461, Abdellatif KTAIB - 2212233, Juliette Arcouet - 1848701. Voici le lien des données : https://github.com/fivethirtyeight/data/tree/master/candy-power-ranking. Aucun calcul ni traitement des données n'a été nécessaire dans cette étude sauf pour la visualisation 4 où nous avons calculés des moyennes."
+                        "Maxime Laroche - 1950276, Félix Blanchard - 2285987, Mehdi Belchiti - 2190903, Zakaria HANIRI - 2187461, Abdellatif KTAIB - 2212233, Juliette Arcouet - 1848701. Aucun calcul ni traitement des données n'a été nécessaire dans cette étude sauf pour la visualisation 4 où nous avons calculés des moyennes."
                     ),
                 ]
             ),
