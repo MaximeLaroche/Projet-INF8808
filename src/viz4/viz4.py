@@ -5,17 +5,17 @@ from plotly import subplots
 import plotly.graph_objects as go
 
 
-COLUMNS = ['chocolate', 'fruity', 'caramel', 'peanutyalmondy', 'crispedricewafer', 'nougat']
+COLUMNS = ['crispedricewafer', 'peanutyalmondy', 'chocolate', 'nougat', 'caramel', 'fruity']
 COL_STR = {"chocolate": "chocolate", "fruity": "fruity", "caramel": "caramel",
                 "peanutyalmondy": "peanuty & almondy", "nougat": "nougat", "crispedricewafer": "crisped rice wafer",
                 "hard": "hard", "bar": "bar", "pluribus": "pluribus"}
 POPULAR_MIX = [
     ('caramel', 'crispedricewafer'),
-    ('caramel', 'nougat'),
-    ('caramel', 'peanutyalmondy'),
-    ('chocolate', 'crispedricewafer'),
     ('chocolate', 'peanutyalmondy'),
-    ('chocolate', 'caramel')
+    ('caramel', 'nougat'),
+    ('chocolate', 'crispedricewafer'),
+    ('chocolate', 'caramel'),
+    ('caramel', 'peanutyalmondy'),
 ]
 
 
@@ -50,7 +50,7 @@ def make_subplot(titles, dfs, means, keys, y_range):
     fig = subplots.make_subplots(rows=2, cols=3, subplot_titles=titles)
     for i, key in enumerate(keys):
         fig.add_trace(
-            go.Histogram(x=dfs[key]['winpercent'], nbinsx=4),
+            go.Histogram(x=dfs[key]['winpercent'], xbins=dict(start=0, end=100, size=10)),
             row=i // 3 + 1, col=i % 3 + 1
         )
 
@@ -66,6 +66,6 @@ def make_subplot(titles, dfs, means, keys, y_range):
 
     fig.update_xaxes(title="Taux d'appréciation", range=[0, 100])
     fig.update_yaxes(title='Quantité de Bonbons', range=y_range)
-    fig.update_layout(showlegend=False, plot_bgcolor='white')
-    fig.update_traces(marker_color='royalblue')
+    fig.update_layout(showlegend=False)
+    fig.update_traces(marker_color='royalblue', hoverinfo="skip")
     return fig
