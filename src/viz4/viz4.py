@@ -48,6 +48,8 @@ def get_figures(df: pd.DataFrame):
 
 def make_subplot(titles, dfs, means, keys, y_range):
     fig = subplots.make_subplots(rows=2, cols=3, subplot_titles=titles)
+    fig.update_layout(showlegend=False, template='simple_white')
+
     for i, key in enumerate(keys):
         fig.add_trace(
             go.Histogram(x=dfs[key]['winpercent'], xbins=dict(start=0, end=100, size=10)),
@@ -58,7 +60,9 @@ def make_subplot(titles, dfs, means, keys, y_range):
             x=means[key],
             line_dash="dash",
             line_color="dimgrey",
-            annotation_text="Moyenne de " + str(round(means[key], 1)),
+            opacity=1,
+            line_width=2,
+            annotation_text=f"Moyenne de {round(means[key], 1)}",
             annotation_font_size=20,
             annotation_font_color="dimgrey",
             row=i // 3 + 1, col=i % 3 + 1
@@ -66,6 +70,5 @@ def make_subplot(titles, dfs, means, keys, y_range):
 
     fig.update_xaxes(title="Taux d'appréciation", range=[0, 100])
     fig.update_yaxes(title='Quantité de Bonbons', range=y_range)
-    fig.update_layout(showlegend=False)
     fig.update_traces(marker_color='royalblue', hoverinfo="skip")
     return fig
