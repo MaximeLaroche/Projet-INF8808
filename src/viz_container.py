@@ -208,7 +208,7 @@ def set_layout(app, df: pd.DataFrame, vizs: list = []):
                         ]
                     ),
                     html.P(
-                        "Maxime Laroche - 1950276, Félix Blanchard - 2285987, Mehdi Belchiti - 2190903, Zakaria HANIRI - 2187461, Abdellatif KTAIB - 2212233, Juliette Arcouet - 1848701. Aucun calcul ni traitement des données n'a été nécessaire dans cette étude sauf pour la visualisation 4 où nous avons calculés des moyennes."
+                        "Maxime Laroche - 1950276, Félix Blanchard - 2285987, Mehdi Belchiti - 2190903, Zakaria HANIRI - 2187461, Abdellatif KTAIB - 2212233, Juliette Arcouet - 1848701. MÉTHODOLOGIE : Nos données décrivent 85 bonbons, avec les variables suivantes : 9 variables booléennes présentent dans le menu de la visualisation 1, plus un taux de sucre, une échelle de prix et un taux de d'appréciation. Aucun calcul ni traitement des données n'a été nécessaire dans cette étude sauf pour la visualisation 4 où nous avons calculés des moyennes."
                     ),
                 ]
             ),
